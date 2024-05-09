@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+
+{% block title %}Upload{% endblock title %}
+
+{% block content %} 
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card my-5">
+                    <div class="card-header">
+                        <h1 class="text-center">Upload DICOM File</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group my-2">
+                                {{ form.dicom_file }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock content %}

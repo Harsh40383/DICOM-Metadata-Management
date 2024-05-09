@@ -1,0 +1,62 @@
+{% extends "base.html" %} 
+{% block content %} 
+
+
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 ">
+                <div class="card my-5 ">
+                    <div class="card-header">
+                        <h1 class="text-center">Upload Successful</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Metadata</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Patient Name</td>
+                                    <td>{{ metadata.patient_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Patient ID</td>
+                                    <td>{{ metadata.patient_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Birthdate</td>
+                                    <td>{{ metadata.birthdate }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Study ID</td>
+                                    <td>{{ metadata.study_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Study Description</td>
+                                    <td>{{ metadata.study_description }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Study Date</td>
+                                    <td>{{ metadata.study_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Modality</td>
+                                    <td>{{ metadata.modality }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Spacing</td>
+                                    <td>{{ metadata.pixel_spacing }}</td>
+                                </tr>
+                                <!-- Add more metadata fields as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
