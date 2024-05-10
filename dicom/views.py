@@ -44,8 +44,6 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
 
-
-
 @login_required
 def upload_dicom(request):
     if request.method == 'POST':
@@ -58,10 +56,6 @@ def upload_dicom(request):
     else:
         form = DICOMUploadForm()
     return render(request, 'upload.html', {'form': form})
-
-
-
-
 
 def extract_dicom_metadata(dicom_file):
     metadata = {}
@@ -97,25 +91,7 @@ def parse_dicom_date(date_string):
             return None  # Return None if date parsing fails
     return None
 
-    metadata = {}
-    ds = pydicom.dcmread(dicom_file)
-
-    # Patient information
-    metadata['patient_name'] = getattr(ds, 'PatientName', 'Unknown')
-    metadata['patient_id'] = getattr(ds, 'PatientID', 'Unknown')
-    metadata['birthdate'] = getattr(ds, 'PatientBirthDate', None)  # Handle missing birthdate gracefully
-
-    # Study details
-    metadata['study_id'] = getattr(ds, 'StudyID', 'Unknown')
-    metadata['study_description'] = getattr(ds, 'StudyDescription', 'Unknown')
-    metadata['study_date'] = getattr(ds, 'StudyDate', None)  # Handle missing study date gracefully
-
-    # Image attributes
-    metadata['modality'] = getattr(ds, 'Modality', 'Unknown')
-    metadata['pixel_spacing'] = getattr(ds, 'PixelSpacing', 'Unknown')
-
-    return metadata
-
+    
 @login_required
 def show(request):
     data = DICOMMetadata.objects.all()
